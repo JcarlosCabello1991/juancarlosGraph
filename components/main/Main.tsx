@@ -5,6 +5,7 @@ import Translation, { TranslationValue } from '../../interfaces/translation.inte
 import { RootState } from '../../redux/store/store'
 import { useSelector} from 'react-redux'
 import { getTranslations } from '../../queries/translations/translations'
+import { getTranslations1 } from '../../pages/api/hello'
 
 const Main = () => {
   const {apiData, location, setApiData} = useContext<contextProps>(context);
@@ -13,7 +14,7 @@ const Main = () => {
   useEffect(() => {
    const getNewDataApi = async () => {
       console.log(language)
-      const response = await getTranslations(language);
+      const response = await getTranslations1(language);
       const {data:{listTranslations}}:{data:any, listTranslation:[Translation]} = response;
       setApiData(listTranslations);
     }
