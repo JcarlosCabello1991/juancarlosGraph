@@ -10,20 +10,21 @@ const Main = () => {
   const {apiData, location, setApiData} = useContext<contextProps>(context);
   const language = useSelector((state: RootState) => state.language.value);
 
-  // useEffect(() => {
-  //   const getNewDataApi = async () => {
-  //     console.log(language)
-  //     const response = await getTranslations(language);
-  //     const {data:{listTranslations}}:{data:any, listTranslation:[Translation]} = response;
-  //     setApiData(listTranslations);
-  //   }
-  //   (language !== '' && language !== null) && getNewDataApi()
-  // },[language])
-  
+  useEffect(() => {
+   const getNewDataApi = async () => {
+      console.log(language)
+      const response = await getTranslations(language);
+      const {data:{listTranslations}}:{data:any, listTranslation:[Translation]} = response;
+      setApiData(listTranslations);
+    }
+    (language !== '' && language !== null) && getNewDataApi()
+  },[language])
+   
   return (
     <div>
+      
        {
-        apiData.map(({id, tag, valueLang}:{id:string, tag:string, valueLang:TranslationValue}) => {
+        apiData.length > 0 && apiData.map(({id, tag, valueLang}:{id:string, tag:string, valueLang:TranslationValue}) => {
           if(tag.includes(`${location}_`)){
             return (
               Object.values(valueLang).map((element: string)=>{
@@ -34,7 +35,7 @@ const Main = () => {
             )
           }
         })
-      }        
+      }     
     </div>
   )
 }
