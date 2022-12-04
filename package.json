@@ -14,10 +14,10 @@
     "graphql-request": "^5.0.0",
     "next": "13.0.5",
     "react": "18.2.0",
-    "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "vercel": "^28.7.2"
   },
   "devDependencies": {
     "@types/node": "18.11.10",
