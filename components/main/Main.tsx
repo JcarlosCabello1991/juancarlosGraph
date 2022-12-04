@@ -5,6 +5,15 @@ import Translation, { TranslationValue } from '../../interfaces/translation.inte
 import { RootState } from '../../redux/store/store'
 import { useSelector} from 'react-redux'
 import { getTranslations } from '../../queries/translations/translations'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: fit-content;
+`
 
 const Main = () => {
   const {apiData, location, setApiData} = useContext<contextProps>(context);
@@ -12,7 +21,6 @@ const Main = () => {
 
   useEffect(() => {
    const getNewDataApi = async () => {
-      console.log(language)
       const response = await getTranslations(language);
       const {data:{listTranslations}}:{data:any, listTranslation:[Translation]} = response;
       setApiData(listTranslations);
@@ -21,8 +29,7 @@ const Main = () => {
   },[language])
    
   return (
-    <div>
-      
+    <Container>      
        {
         apiData.length > 0 ? apiData.map(({id, tag, valueLang}:{id:string, tag:string, valueLang:TranslationValue}) => {
           if(tag.includes(`${location}_`)){
@@ -36,7 +43,7 @@ const Main = () => {
           }
         }) : <p>loading</p>
       }     
-    </div>
+    </Container>
   )
 }
 

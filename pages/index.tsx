@@ -1,16 +1,12 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { Amplify } from 'aws-amplify';
-import { myAppConfig } from '../apiConfig/apiConfiguration';
 import { getTranslations } from '../queries/translations/translations';
 import Translation from '../interfaces/translation.interface';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect} from 'react';
 import HomePage from './home/HomePage';
 import { contextProps } from '../interfaces/contextProps.interface';
 import { context } from '../context/ContextProvider';
-import { useRouter } from 'next/router';
-import About from './about/About';
 
 export async function getServerSideProps(){
   let data:any = [];
@@ -30,6 +26,7 @@ const Home: NextPage = ({listTranslations}:any) => {
   const {setApiData} = useContext<contextProps>(context);
 
   useEffect(()=>{
+    //To avoid the refresh listTtanslations when click from About Section to Home
     if(localStorage.getItem('preferLang') === null){
       setApiData(listTranslations);
     }

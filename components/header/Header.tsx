@@ -6,12 +6,19 @@ import { useRouter } from 'next/router';
 import { contextProps } from '../../interfaces/contextProps.interface';
 import { context } from '../../context/ContextProvider';
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f7cff;
+`
 const Ul = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   list-style:none;
+  padding: 0;
 `;
 
 const Span = styled.span`
@@ -34,7 +41,7 @@ const Header = () => {
   }
 
   return (
-    <div>
+    <Container>
       <Ul>
         {
           pages.map((page:string, index:number) => {
@@ -44,7 +51,7 @@ const Header = () => {
           })
         }
       </Ul>
-    </div>
+    </Container>
   )
 }
 

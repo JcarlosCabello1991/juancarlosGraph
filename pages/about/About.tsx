@@ -4,6 +4,7 @@ import Header from '../../components/header/Header';
 import Main from '../../components/main/Main';
 import Footer from '../../components/footer/Footer';
 import styles from '../../styles/Home.module.css'
+import { HeaderSection, MainSection, FooterSection } from '../../components/sectionsStyles/styles'
 import { NextPage } from 'next';
 
 const Ul = styled.ul`
@@ -23,9 +24,9 @@ const About: NextPage = () => {
 
   return (    
     <div className={styles.container}>
-      <header><Header /></header>
-      <main><Main /></main>
-      <footer><Footer /></footer>
+      <HeaderSection><Header /></HeaderSection>
+      <MainSection><Main /></MainSection>
+      <FooterSection><Footer /></FooterSection>
     </div>
   )
 }

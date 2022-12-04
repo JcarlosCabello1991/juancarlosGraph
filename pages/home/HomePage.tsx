@@ -3,13 +3,14 @@ import React from 'react'
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import Main from '../../components/main/Main'
+import { HeaderSection, MainSection, FooterSection } from '../../components/sectionsStyles/styles'
 
 const HomePage = () => {
   return (
     <>
-      <header><Header /></header>
-      <main><Main /></main>
-      <footer><Footer /></footer>
+      <HeaderSection><Header /></HeaderSection>
+      <MainSection><Main /></MainSection>
+      <FooterSection><Footer /></FooterSection>
     </>
       
   )
