@@ -30,7 +30,9 @@ const Home: NextPage = ({listTranslations}:any) => {
   const {setApiData} = useContext<contextProps>(context);
 
   useEffect(()=>{
-    setApiData(listTranslations);
+    if(localStorage.getItem('preferLang') === null){
+      setApiData(listTranslations);
+    }
   },[])
 
   return (
