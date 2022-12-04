@@ -7,8 +7,31 @@ import { getTranslations } from '../queries/translations/translations';
 import Translation from '../interfaces/translation.interface';
 import { useContext, useEffect, useState } from 'react';
 import HomePage from './home/HomePage';
+import { contextProps } from '../interfaces/contextProps.interface';
+import { context } from '../context/ContextProvider';
+import { useRouter } from 'next/router';
+import About from './about/About';
 
-const Home: NextPage = () => {
+export async function getServerSideProps(){
+  let data:any = [];
+  try{
+    data = await getTranslations('es');
+    const {data:{listTranslations}}:{data:any, listTranslation:[Translation]} = await data;
+    return{
+      props:{listTranslations}
+    }
+  }catch(error){
+    console.log(error)
+  }  
+}
+
+const Home: NextPage = ({listTranslations}:any) => {
+
+  const {setApiData} = useContext<contextProps>(context);
+
+  useEffect(()=>{
+    setApiData(listTranslations);
+  },[])
 
   return (
     <div className={styles.container}>
