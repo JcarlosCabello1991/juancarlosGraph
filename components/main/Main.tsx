@@ -12,6 +12,7 @@ const Main = () => {
 
   useEffect(() => {
     const getNewDataApi = async () => {
+      console.log(language)
       const response = await getTranslations(language);
       const {data:{listTranslations}}:{data:any, listTranslation:[Translation]} = response;
       setApiData(listTranslations);
