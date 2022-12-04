@@ -22,7 +22,7 @@ function Footer() {
 
     if(typeof window !== 'undefined'){
 
-      const selected = document.getElementById("selectedLang")
+      const selected: HTMLSelectElement = document.getElementById("selectedLang") as HTMLSelectElement
       selectedOption = selected?.options[selected?.selectedIndex].value;
 
       if(selectedOption === 'es'){
