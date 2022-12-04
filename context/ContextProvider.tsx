@@ -15,7 +15,7 @@ export const context = createContext<contextProps>({} as contextProps);
 
 export const ContextProvider = ({children}:props) => {
   const router = useRouter();
-
+  console.log(router.pathname)
   const [location, setLocation] = useState<string>(router.pathname === '/' ? 'home' : 'about');  
   const language = useSelector((state: RootState) => state.language.value);
   const [apiData, setApiData] = useState<[]>([]);
@@ -23,7 +23,7 @@ export const ContextProvider = ({children}:props) => {
   
   useEffect(() => {
     const languageStorage = localStorage.getItem('preferLang');
-
+    
     if(languageStorage !== null && language != languageStorage){
       //Call to get translations with the favourite user languagefavourite
       languageStorage === 'es' ? dispatch(es(languageStorage)) : dispatch(en(languageStorage));
