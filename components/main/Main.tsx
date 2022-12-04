@@ -24,9 +24,13 @@ const Main = () => {
        {
         apiData.map(({id, tag, valueLang}:{id:string, tag:string, valueLang:TranslationValue}) => {
           if(tag.includes(`${location}_`)){
-          return(              
-              <p key={id}>{valueLang[language]}</p>              
-          )
+            return (
+              Object.values(valueLang).map((element: string)=>{
+                return(
+                  <p key={id}>{element}</p>
+                )
+              })
+            )
           }
         })
       }        
