@@ -17,7 +17,7 @@ const Main = () => {
       const {data:{listTranslations}}:{data:any, listTranslation:[Translation]} = response;
       setApiData(listTranslations);
     }
-    language !== '' && getNewDataApi()
+    (language !== '' && language !== null) && getNewDataApi()
   },[language])
   
   return (
