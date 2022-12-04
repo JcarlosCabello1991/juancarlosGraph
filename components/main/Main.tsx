@@ -24,7 +24,7 @@ const Main = () => {
     <div>
       
        {
-        apiData.length > 0 && apiData.map(({id, tag, valueLang}:{id:string, tag:string, valueLang:TranslationValue}) => {
+        apiData.length > 0 ? apiData.map(({id, tag, valueLang}:{id:string, tag:string, valueLang:TranslationValue}) => {
           if(tag.includes(`${location}_`)){
             return (
               Object.values(valueLang).map((element: string)=>{
@@ -34,7 +34,7 @@ const Main = () => {
               })
             )
           }
-        })
+        }) : <p>loading</p>
       }     
     </div>
   )
